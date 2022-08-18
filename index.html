@@ -10,14 +10,21 @@
     <span class='name'></span> (<span class='materia'></span>, <span class='materia'></span>)
   </li></template>
 </ol>
+<strong>Quests:</strong>
+<ul id='quests'>
+  <template id='quest'><li>
+    <span class='name'></span> (<span class='reward'></span>)
+  </li></template>
+</ul>
 
 <script type='module'>
   import * as party from './party.js'
+  import * as quest from './quest.js'
   
-  let member=document.querySelector('template#member').content.children[0]
+  let t=document.querySelector('template#member').content.children[0]
   let result=document.querySelector('#party')
   for(let p of party.party){
-    let m=member.cloneNode(true)
+    let m=t.cloneNode(true)
     m.querySelector('.name').textContent=p.name
     let materia=m.querySelectorAll('.materia')
     for(let i=0;i<2;i++){
@@ -25,5 +32,13 @@
       materia[i].classList.add(p.materia[i])
     }
     result.appendChild(m)
+  }
+  t=document.querySelector('template#quest').content.children[0]
+  result=document.querySelector('#quests')
+  for(let q of quest.assign(party.party)){
+    let li=t.cloneNode(true)
+    li.querySelector('.name').textContent=q.name
+    li.querySelector('.reward').textContent=q.reward
+    result.appendChild(li)
   }
 </script>

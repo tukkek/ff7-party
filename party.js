@@ -1,27 +1,29 @@
 import * as rpg from './rpg.js'
 
-const COMMAND='command'
-const MAGIC='magic'
-const PASSIVE='passive'
-const SUMMON='summon'
-const SUPPORT='support'
-
 class Character{
   constructor(name,materia){
     this.name=name
     this.materia=materia
     this.materia.sort()
   }
+  
+  use(m){return this.materia.indexOf(m)>=0}
 }
 
-export var party=rpg.shuffle([
-  new Character('Aeris',[MAGIC,SUMMON]),
-  new Character('Barret',[PASSIVE,SUMMON]),
-  new Character('Cait Sith',[COMMAND,MAGIC]),
-  new Character('Cid',[PASSIVE,COMMAND]),
-  new Character('Cloud',[PASSIVE,MAGIC]),
-  new Character('Red XIII',[SUPPORT,SUMMON]),
-  new Character('Tifa',[SUPPORT,COMMAND]),
-  new Character('Vincent',[SUPPORT,MAGIC]),
-  new Character('Yuffie',[COMMAND,SUMMON])
-])
+export var command='command'
+export var magic='magic'
+export var passive='passive'
+export var summon='summon'
+export var support='support'
+
+export var aeris=new Character('Aeris',[magic,summon])
+export var barret=new Character('Barret',[passive,summon])
+export var cait=new Character('Cait Sith',[command,magic])
+export var cid=new Character('Cid',[passive,command])
+export var cloud=new Character('Cloud',[passive,magic])
+export var red=new Character('Red XIII',[support,summon])
+export var tifa=new Character('Tifa',[support,command])
+export var vincent=new Character('Vincent',[support,magic])
+export var yuffie=new Character('Yuffie',[command,summon])
+
+export var party=rpg.shuffle([aeris,barret,cait,cid,cloud,red,tifa,vincent,yuffie])
