@@ -1,0 +1,18 @@
+.materia{
+  font-weight:bold;
+}
+.materia.summon{
+  color:red;
+}
+.materia.support{
+  color:blue;
+}
+.materia.magic{
+  color:green;
+}
+.materia.passive{
+  color:purple;
+}
+.materia.command{
+  color:orange;
+}

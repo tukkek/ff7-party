@@ -1,0 +1,29 @@
+<title>Final Fantasy VII party generator</title>
+
+<meta charset='utf8'>
+<link rel='stylesheet' href='style.css'>
+<meta name='viewport' content='width=device-width,initial-scale=1'>
+
+<strong>Party priority:</strong>
+<ol id='party'>
+  <template id='member'><li>
+    <span class='name'></span> (<span class='materia'></span>, <span class='materia'></span>)
+  </li></template>
+</ol>
+
+<script type='module'>
+  import * as party from './party.js'
+  
+  let member=document.querySelector('template#member').content.children[0]
+  let result=document.querySelector('#party')
+  for(let p of party.party){
+    let m=member.cloneNode(true)
+    m.querySelector('.name').textContent=p.name
+    let materia=m.querySelectorAll('.materia')
+    for(let i=0;i<2;i++){
+      materia[i].textContent=p.materia[i]
+      materia[i].classList.add(p.materia[i])
+    }
+    result.appendChild(m)
+  }
+</script>
