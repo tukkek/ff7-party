@@ -3,15 +3,22 @@
 <meta charset='utf8'>
 <link rel='stylesheet' href='style.css'>
 <meta name='viewport' content='width=device-width,initial-scale=1'>
+<script src="//cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
 
-<strong>Party priority:</strong>
+<div><a id='generate'>Generate a new party</a></div>
+<div><a id='permalink'>Permalink this party</a></div>
+<h3>Party available:</h3>
+<div id='available'>
+  <template id='character'><div><label class='name'><input type='checkbox'></label></div>.</template>
+</div>
+<h3>Party priority:</h3>
 <ol id='party'>
   <template id='member'><li>
-    <span class='name'></span>:<span class='job'></span>.
+    <span class='name'></span>:<span class='job'></label>.
   </li></template>
 </ol>
-<strong>Quests:</strong>
-<ul id='quests'>
+<h3>Quests: <button>Show</button></h3>
+<ul id='quests' class='hidden'>
   <template id='quest'><li>
     <span class='name'></span> (<span class='reward'></span>)
   </li></template>
@@ -20,22 +27,49 @@
 <script type='module'>
   import * as party from './party.js'
   import * as quest from './quest.js'
-  
-  let t=document.querySelector('template#member').content.children[0]
-  let result=document.querySelector('#party')
-  for(let p of party.party){
-    let m=t.cloneNode(true)
-    m.querySelector('.name').textContent=p.name
-    let j=m.querySelector('.job')
-    for(let i=0;i<p.materia.length;i++){
-      let m=document.createElement('span')
-      m.classList.add('materia')
-      m.textContent=' '+p.materia[i]
-      m.classList.add(p.materia[i])
-      j.appendChild(m)
+  import * as rpg from './rpg.js'
+  import * as permalink from './permalink.js'
+
+  function update(){
+    let t=document.querySelector('template#member').content.children[0]
+    let result=document.querySelector('#party')
+    for(let r of result.querySelectorAll('li')) r.remove()
+    let unlocked=Array.from(document.querySelectorAll('#available label'))
+    unlocked=unlocked.filter(l=>l.querySelector('input').checked).map(l=>l.textContent)
+    for(let p of party.party){
+      if(!unlocked.find(u=>p.name.indexOf(u)>=0)) continue
+      let m=t.cloneNode(true)
+      m.querySelector('.name').textContent=p.name
+      let j=m.querySelector('.job')
+      for(let i=0;i<p.materia.length;i++){
+        let m=document.createElement('span')
+        m.classList.add('materia')
+        m.textContent=' '+p.materia[i]
+        m.classList.add(p.materia[i])
+        j.appendChild(m)
+      }
+      result.appendChild(m)
     }
-    result.appendChild(m)
   }
+  function toggle(){
+    let q=document.querySelector('#quests')
+    let h=q.classList.toggle('hidden')
+    document.querySelector('button').textContent=h?'Show':'Hide'
+  }
+  
+  permalink.setup()
+  rpg.setup()
+  let t=document.querySelector('template#character').content.children[0]
+  let result=document.querySelector('#available')
+  for(let p of party.party){
+    let label=t.cloneNode(true)
+    let n=p.name.substring(0,p.name.indexOf(','))
+    label.querySelector('.name').insertAdjacentText('beforeend',n)
+    label.querySelector('input').onchange=update
+    result.appendChild(label)
+  }
+  rpg.shuffle(party.party)
+  update()
   t=document.querySelector('template#quest').content.children[0]
   result=document.querySelector('#quests')
   for(let q of quest.assign(party.party)){
@@ -44,4 +78,5 @@
     li.querySelector('.reward').textContent=q.reward
     result.appendChild(li)
   }
+  document.querySelector('button').onclick=toggle
 </script>

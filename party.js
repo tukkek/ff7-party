@@ -1,5 +1,3 @@
-import * as rpg from './rpg.js'
-
 class Character{
   constructor(name,materia){
     this.name=name
@@ -26,4 +24,4 @@ export var tifa=new Character('Tifa, monk',[command,support])
 export var vincent=new Character('Vincent, black mage',[magic,support])
 export var yuffie=new Character('Yuffie, ninja',[summon,command])
 
-export var party=rpg.shuffle([aeris,barret,cait,cid,cloud,red,tifa,vincent,yuffie])
+export var party=[aeris,barret,cait,cid,cloud,red,tifa,vincent,yuffie]

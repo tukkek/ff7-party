@@ -16,3 +16,9 @@
 .materia.command{
   color:orange;
 }
+label{
+  margin-left:1em;
+}
+.hidden{
+  display:none;
+}

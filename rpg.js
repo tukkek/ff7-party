@@ -1,3 +1,5 @@
+import * as permalink from './permalink.js'
+
 export function roll(min,max){return Math.floor(Math.random()*(max-min+1))+min} 
 
 export function shuffle(array,clone=false){
@@ -12,3 +14,5 @@ export function shuffle(array,clone=false){
   }
   return array
 }
+
+export function setup(){Math.seedrandom(permalink.seed)}
