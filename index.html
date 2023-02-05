@@ -7,7 +7,7 @@
 <strong>Party priority:</strong>
 <ol id='party'>
   <template id='member'><li>
-    <span class='name'></span> (<span class='materia'></span>, <span class='materia'></span>)
+    <span class='name'></span>:<span class='job'></span>.
   </li></template>
 </ol>
 <strong>Quests:</strong>
@@ -26,10 +26,13 @@
   for(let p of party.party){
     let m=t.cloneNode(true)
     m.querySelector('.name').textContent=p.name
-    let materia=m.querySelectorAll('.materia')
-    for(let i=0;i<2;i++){
-      materia[i].textContent=p.materia[i]
-      materia[i].classList.add(p.materia[i])
+    let j=m.querySelector('.job')
+    for(let i=0;i<p.materia.length;i++){
+      let m=document.createElement('span')
+      m.classList.add('materia')
+      m.textContent=' '+p.materia[i]
+      m.classList.add(p.materia[i])
+      j.appendChild(m)
     }
     result.appendChild(m)
   }

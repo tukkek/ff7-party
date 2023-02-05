@@ -16,14 +16,14 @@ export var passive='passive'
 export var summon='summon'
 export var support='support'
 
-export var aeris=new Character('Aeris',[magic,summon])
-export var barret=new Character('Barret',[passive,summon])
-export var cait=new Character('Cait Sith',[command,magic])
-export var cid=new Character('Cid',[passive,command])
-export var cloud=new Character('Cloud',[passive,magic])
-export var red=new Character('Red XIII',[support,summon])
-export var tifa=new Character('Tifa',[support,command])
-export var vincent=new Character('Vincent',[support,magic])
-export var yuffie=new Character('Yuffie',[command,summon])
+export var aeris=new Character('Aeris, white mage',[magic,summon])
+export var barret=new Character('Barret, gunner',[command,passive])
+export var cait=new Character('Cait, gambler',[passive])
+export var cid=new Character('Cid, dragoon',[command,magic])
+export var cloud=new Character('Cloud, mystic knight',[magic,passive])
+export var red=new Character('Red, summoner',[summon,support])
+export var tifa=new Character('Tifa, monk',[command,support])
+export var vincent=new Character('Vincent, black mage',[magic,support])
+export var yuffie=new Character('Yuffie, ninja',[summon,command])
 
 export var party=rpg.shuffle([aeris,barret,cait,cid,cloud,red,tifa,vincent,yuffie])
