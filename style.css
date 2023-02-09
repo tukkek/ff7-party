@@ -22,3 +22,24 @@ label{
 .hidden{
   display:none;
 }
+#partycontrol{
+  display:flex;
+}
+#partycontrol>div{
+  margin-right:1em;
+}
+#party{
+  margin-top:0;
+  padding-top:0;
+}
+h3,h4{
+  margin:0;
+  padding:0;
+}
+h3{
+  margin-top:1em;
+  text-decoration:underline;
+}
+button{
+  margin-left:1em;
+}

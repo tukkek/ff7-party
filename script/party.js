@@ -1,4 +1,4 @@
-class Character{
+export class Character{
   constructor(name,materia){
     this.name=name
     this.materia=materia
@@ -6,6 +6,8 @@ class Character{
   }
   
   use(m){return this.materia.indexOf(m)>=0}
+  
+  get shortname(){return this.name.substring(0,this.name.indexOf(','))}
 }
 
 export var command='command'
