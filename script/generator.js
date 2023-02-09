@@ -4,8 +4,9 @@ import * as rpg from './rpg.js'
 import * as permalink from './permalink.js'
 
 const PARTY=document.querySelector('#party')
-const QUESTS=document.querySelector('#quests')
-
+const QUESTS=document.querySelector('template#quests').content.children[0]
+const QUEST=QUESTS.querySelector('template#quest').content.children[0]
+  
 function call(){
   let t=document.querySelector('template#member').content.children[0]
   for(let r of PARTY.querySelectorAll('li')) r.remove()
@@ -28,29 +29,26 @@ function call(){
   }
 }
 
-function adventure(){
-  let t=document.querySelector('template#quest').content.children[0]
-  for(let q of document.querySelectorAll('#quests > .quest'))
-    q.remove()
+function adventure(element,disc){
+  for(let q of element.querySelectorAll('.quest')) q.remove()
   let p=Array.from(PARTY.querySelectorAll('.member')).map(p=>p.member)
-  for(let q of quest.assign(p)){
-    let li=t.cloneNode(true)
+  for(let q of quest.assign(p,disc)){
+    let li=QUEST.cloneNode(true)
     li.querySelector('.name').textContent=q.name
     li.querySelector('.reward').textContent=q.reward
-    QUESTS.appendChild(li)
+    element.appendChild(li)
   }
-  document.querySelector('button').onclick=toggle
 }
 
 function update(){
   call()
-  adventure()
+  let quests=document.querySelectorAll('.quests')
+  for(let i=0;i<quests.length;i++) adventure(quests[i],quest.discs[i])
 }
 
-function toggle(){
-  let q=document.querySelector('#quests')
-  let h=q.classList.toggle('hidden')
-  document.querySelector('button').textContent=h?'Show':'Hide'
+function toggle(quests,event){
+  let h=quests.classList.toggle('hidden')
+  event.target.textContent=h?'Show':'Hide'
 }
 
 export function setup(){
@@ -65,5 +63,11 @@ export function setup(){
     result.appendChild(label)
   }
   rpg.shuffle(party.party)
+  for(let i=0;i<3;i++){
+    let quests=QUESTS.cloneNode(true)
+    quests.querySelector('h3 span').textContent=`Disc ${i+1} quests`
+    quests.querySelector('.toggle').onclick=e=>toggle(quests.querySelector('ul'),e)
+    document.body.appendChild(quests)
+  }
   update()
 }

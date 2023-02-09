@@ -24,12 +24,14 @@
     </ol>
   </div>
 </div>
-<h3>Quests<button>Show</button></h3>
-<ul id='quests' class='hidden'>
-  <template id='quest'><li class='quest'>
-    <span class='name'></span> (<span class='reward'></span>)
-  </li></template>
-</ul>
+<template id='quests'><div>
+  <h3><span></span><button class='toggle'>Show</button></h3>
+  <ul class='hidden quests'>
+    <template id='quest'><li class='quest'>
+      <span class='name'></span> (<span class='reward'></span>)
+    </li></template>
+  </ul>
+</div></template>
 
 <script type='module'>
   import * as generator from './script/generator.js'
