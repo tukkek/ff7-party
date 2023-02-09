@@ -18,12 +18,14 @@ function call(){
     m.querySelector('.name').textContent=p.name
     m.member=p
     let j=m.querySelector('.job')
-    for(let i=0;i<p.materia.length;i++){
+    let nmateria=p.materia.length
+    for(let i=0;i<nmateria;i++){
       let m=document.createElement('span')
       m.classList.add('materia')
-      m.textContent=' '+p.materia[i]
+      m.textContent=p.materia[i]
       m.classList.add(p.materia[i])
       j.appendChild(m)
+      if(i<nmateria-1) j.appendChild(document.createTextNode(', '))
     }
     PARTY.appendChild(m)
   }

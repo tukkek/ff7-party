@@ -12,26 +12,30 @@
   <div>
     <h4>Available</h4>
     <div id='available'>
-      <template id='character'><div><label class='name'><input type='checkbox'></label></div>.</template>
+      <template id='character'>
+        <div><label class='name'><input type='checkbox'></label></div>.
+      </template>
     </div>
   </div>
   <div>
     <h4>Priority</h4>
     <ol id='party'>
-      <template id='member'><li class='member'>
-        <span class='name'></span>:<span class='job'></span>.
-      </li></template>
+      <template id='member'>
+        <li class='member'><span class='name'></span> (<span class='job'></span>)</li>
+      </template>
     </ol>
   </div>
 </div>
-<template id='quests'><div>
-  <h3><span></span><button class='toggle'>Show</button></h3>
-  <ul class='hidden quests'>
-    <template id='quest'><li class='quest'>
-      <span class='name'></span> (<span class='reward'></span>)
-    </li></template>
-  </ul>
-</div></template>
+<template id='quests'>
+  <div>
+    <h3><span></span><button class='toggle'>Show</button></h3>
+    <ul class='hidden quests'>
+      <template id='quest'>
+        <li class='quest'><span class='name'></span> (<span class='reward'></span>)</li>
+      </template>
+    </ul>
+  </div>
+</template>
 
 <script type='module'>
   import * as generator from './script/generator.js'
