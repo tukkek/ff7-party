@@ -2,7 +2,7 @@
 
 Access [here](https://tukkek.github.io/ff7-party/).
 
-References:
+## References
 
 * [Side quests guide](https://jegged.com/Games/Final-Fantasy-VII/Side-Quests/)
 * [Limit breaks guide](https://jegged.com/Games/Final-Fantasy-VII/Side-Quests/Ultimate-Weapons.html)
