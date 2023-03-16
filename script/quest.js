@@ -23,6 +23,7 @@ export var wutai=new Quest('Wutai','Yuffie and her break',[party.yuffie])
 export var disc1=[
   new Quest('Mytrhil mine','Long-range materia',[materia.passive]),
   wutai,
+  new Quest('Fort Condor',"Yuffie's superball",[party.yuffie]),
   new Quest('Gold saucer, Speed square','Gear for Aeris',[party.aeris]),
   new Quest('Gongaga','Gear for Cait Sith',[party.cait]),
   new Quest('Mythril','Gold armlet',[party.aeris]),
