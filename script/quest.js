@@ -21,7 +21,7 @@ class Quest{
 
 export var wutai=new Quest('Wutai','Yuffie and her break',[party.yuffie])
 export var disc1=[
-  new Quest('Mytrhil mine','Long-range materia',[party.passive]),
+  new Quest('Mytrhil mine','Long-range materia',[materia.passive]),
   wutai,
   new Quest('Gold saucer, Speed square','Gear for Aeris',[party.aeris]),
   new Quest('Gongaga','Gear for Cait Sith',[party.cait]),
